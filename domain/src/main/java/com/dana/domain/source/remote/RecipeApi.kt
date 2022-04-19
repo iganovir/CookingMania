@@ -1,4 +1,4 @@
-package com.dana.onboardingproject.source.remote
+package com.dana.domain.source.remote
 
 /**
 * @author Iga Noviyanti created on 18/04/22 at 11.09
