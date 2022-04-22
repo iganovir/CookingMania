@@ -1,13 +1,12 @@
-package com.dana.domain.usecase
+package com.dana.domain.listrecipe.interactor
 
-import com.dana.domain.repository.RecipeRepository
+import com.dana.domain.listrecipe.repository.RecipeRepository
+import com.dana.domain.base.BaseUseCase
 import io.reactivex.Observable
 import javax.inject.Inject
 
-//interface ExampleBaseUseCase : BaseUseCase<BaseModel, ExampleUseCase.Params>
-
-class GetRecipesListUseCase @Inject constructor(private val repository: RecipeRepository):
-    BaseUseCase<GetRecipesListUseCase.Params, Int>() {
+class GetRecipesList @Inject constructor(private val repository: RecipeRepository):
+    BaseUseCase<GetRecipesList.Params, Int>() {
 
     override fun buildUseCase(params: Params): Observable<Int> {
         return params.let {

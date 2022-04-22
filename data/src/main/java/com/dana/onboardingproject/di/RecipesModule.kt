@@ -1,7 +1,7 @@
 package com.dana.onboardingproject.di
 
-import com.dana.domain.repository.RecipeRepository
-import com.dana.domain.usecase.GetRecipesListUseCase
+import com.dana.domain.listrecipe.repository.RecipeRepository
+import com.dana.domain.listrecipe.interactor.GetRecipesListUseCase
 import com.dana.onboardingproject.datasource.RecipesDataSource
 import com.dana.onboardingproject.repository.RecipeSourceRepository
 import com.dana.onboardingproject.source.remote.RecipeApi

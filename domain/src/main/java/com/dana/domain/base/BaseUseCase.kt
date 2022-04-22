@@ -1,4 +1,4 @@
-package com.dana.domain.usecase
+package com.dana.domain.base
 
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable

@@ -1,6 +1,6 @@
 package com.dana.onboardingproject
 
-import com.dana.domain.usecase.GetRecipesListUseCase
+import com.dana.domain.listrecipe.interactor.GetRecipesListUseCase
 import javax.inject.Inject
 
 class MainActivityPresenter @Inject constructor(

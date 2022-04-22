@@ -1,7 +1,7 @@
 package com.dana.onboardingproject.di.component
 
 import android.content.Context
-import com.dana.domain.repository.RecipeRepository
+import com.dana.domain.listrecipe.repository.RecipeRepository
 import com.dana.onboardingproject.di.NetworkModule
 import com.dana.onboardingproject.di.RecipesModule
 import com.dana.onboardingproject.di.module.ApplicationModule

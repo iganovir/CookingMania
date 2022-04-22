@@ -1,6 +1,6 @@
 package com.dana.onboardingproject.datasource
 
-import com.dana.domain.repository.RecipeRepository
+import com.dana.domain.listrecipe.repository.RecipeRepository
 import com.dana.onboardingproject.source.remote.RecipeApi
 import io.reactivex.Observable
 
