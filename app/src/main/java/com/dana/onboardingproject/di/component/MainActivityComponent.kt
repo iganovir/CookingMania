@@ -1,6 +1,6 @@
 package com.dana.onboardingproject.di.component
 
-import com.dana.onboardingproject.MainActivity
+import com.dana.onboardingproject.examplemain.MainActivity
 import com.dana.onboardingproject.di.MainActivityModule
 import com.dana.onboardingproject.di.PerActivity
 import dagger.Component

@@ -1,14 +1,24 @@
-package com.dana.onboardingproject.data.response
+/*
+ * PT. Espay Debit Indonesia Koe.
+ * DANA.id
+ * Copyright (c) 2017-2022. All Right Reserved.
+ */
+
+package com.dana.onboardingproject.listrecipe.repository.source.network.result
 
 import com.google.gson.annotations.SerializedName
 
-data class ListRecipesResponse(
+/**
+ * @author Iga Noviyanti (iga.noviyanti@dana.id)
+ * @version ListRecipesResponse, v 0.1 22/04/22 11.23 by Iga Noviyanti
+ */
+data class ListRecipesResult(
     @SerializedName("count")
     val count: Int? = null,
     @SerializedName("results")
-    val results: List<Result?>? = null
+    val results: List<RecipeItem>? = null
 ) {
-    data class Result(
+    data class RecipeItem(
         @SerializedName("approved_at")
         val approvedAt: Int? = null,
         @SerializedName("aspect_ratio")
@@ -26,7 +36,7 @@ data class ListRecipesResponse(
         @SerializedName("compilations")
         val compilations: List<Any?>? = null,
         @SerializedName("cook_time_minutes")
-        val cookTimeMinutes: Any? = null,
+        val cookTimeMinutes: String? = null,
         @SerializedName("country")
         val country: String? = null,
         @SerializedName("created_at")
@@ -40,7 +50,7 @@ data class ListRecipesResponse(
         @SerializedName("facebook_posts")
         val facebookPosts: List<Any?>? = null,
         @SerializedName("id")
-        val id: Int? = null,
+        val id: Int,
         @SerializedName("inspired_by_url")
         val inspiredByUrl: Any? = null,
         @SerializedName("instructions")

@@ -1,8 +1,11 @@
-package com.dana.onboardingproject
+package com.dana.onboardingproject.examplemain
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.dana.domain.listrecipe.model.Recipe
+import com.dana.onboardingproject.OnboardingApp
+import com.dana.onboardingproject.R
 import com.dana.onboardingproject.di.MainActivityModule
 import com.dana.onboardingproject.di.component.DaggerMainActivityComponent
 import javax.inject.Inject
@@ -22,9 +25,8 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
     fun getApplicationComponent() = (application as OnboardingApp).getApplicationComponent()
 
-
-    override fun setListRecipes(recipesSize: Int) {
-        Log.e("recipes", "recipes size $recipesSize")
+    override fun setListRecipes(recipes: List<Recipe>) {
+        Log.e("recipes", "recipes size ${recipes.size}")
     }
 
     private fun initInjector() {

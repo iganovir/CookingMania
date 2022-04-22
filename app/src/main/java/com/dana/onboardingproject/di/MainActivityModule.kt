@@ -1,7 +1,7 @@
 package com.dana.onboardingproject.di
 
-import com.dana.onboardingproject.MainActivityContract
-import com.dana.onboardingproject.MainActivityPresenter
+import com.dana.onboardingproject.examplemain.MainActivityContract
+import com.dana.onboardingproject.examplemain.MainActivityPresenter
 import dagger.Module
 import dagger.Provides
 

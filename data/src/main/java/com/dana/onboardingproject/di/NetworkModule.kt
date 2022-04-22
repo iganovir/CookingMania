@@ -2,8 +2,8 @@ package com.dana.onboardingproject.di
 
 import android.content.Context
 import com.dana.onboardingproject.data.BuildConfig
-import com.dana.onboardingproject.source.remote.Constant
-import com.dana.onboardingproject.source.remote.RecipeApi
+import com.dana.onboardingproject.network.Constant
+import com.dana.onboardingproject.network.RecipeAPI
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -76,8 +76,8 @@ object NetworkModule {
     fun provideRecipeApi(
         httpClientBuilder: OkHttpClient.Builder,
         retrofitBuilder: Retrofit.Builder
-    ): RecipeApi =
-        provideService(RecipeApi::class.java, httpClientBuilder, retrofitBuilder)
+    ): RecipeAPI =
+        provideService(RecipeAPI::class.java, httpClientBuilder, retrofitBuilder)
 
     private fun <S> provideService(
         serviceClass: Class<S>,
