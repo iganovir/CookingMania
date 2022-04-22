@@ -1,4 +1,4 @@
-package com.dana.onboardingproject.source.remote
+package com.dana.onboardingproject.network
 
 object Constant {
 

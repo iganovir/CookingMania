@@ -1,16 +1,16 @@
-package com.dana.onboardingproject
+package com.dana.onboardingproject.examplemain
 
-import com.dana.domain.usecase.GetRecipesListUseCase
+import com.dana.domain.listrecipe.interactor.GetListRecipe
 import javax.inject.Inject
 
 class MainActivityPresenter @Inject constructor(
     private val view: MainActivityContract.View,
-    private val getRecipes: GetRecipesListUseCase
-) : MainActivityContract.Presenter{
+    private val getRecipe: GetListRecipe
+) : MainActivityContract.Presenter {
 
     override fun getListRecipes(from: Int, size: Int) {
-        getRecipes.execute(
-            GetRecipesListUseCase.Params(from = from, size = size),
+        getRecipe.execute(
+            GetListRecipe.Params(from = from, size = size),
             onSuccess = { recipes ->
                 view.setListRecipes(recipes)
             },

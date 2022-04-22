@@ -1,4 +1,6 @@
-package com.dana.onboardingproject
+package com.dana.onboardingproject.examplemain
+
+import com.dana.domain.listrecipe.model.Recipe
 
 interface MainActivityContract {
 
@@ -7,6 +9,6 @@ interface MainActivityContract {
     }
 
     interface View {
-        fun setListRecipes(recipesSize: Int)
+        fun setListRecipes(recipes: List<Recipe>)
     }
 }

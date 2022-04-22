@@ -1,4 +1,4 @@
-package com.dana.domain.usecase
+package com.dana.domain.base
 
 typealias OnSuccessCallback<T> = (T) -> Unit
 

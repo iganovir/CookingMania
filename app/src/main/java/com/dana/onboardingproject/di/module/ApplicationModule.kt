@@ -2,6 +2,8 @@ package com.dana.onboardingproject.di.module
 
 import android.app.Application
 import android.content.Context
+import com.dana.domain.listrecipe.repository.RecipeRepository
+import com.dana.onboardingproject.listrecipe.repository.RecipeEntityRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,4 +23,11 @@ class ApplicationModule(private val app: Application) {
     @Singleton
     @Provides
     fun provideApplication(): Application = app
+
+    @Singleton
+    @Provides
+    fun provideRecipeRepository(
+        recipeEntityRepository: RecipeEntityRepository
+    ): RecipeRepository =
+        recipeEntityRepository
 }
