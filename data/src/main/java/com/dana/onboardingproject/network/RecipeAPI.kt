@@ -20,7 +20,8 @@ interface RecipeAPI {
     @GET(Constant.Network.Endpoint.LIST_RECIPE)
     fun getRecipes(
         @Query("from") from: Int,
-        @Query("size") size: Int
+        @Query("size") size: Int,
+        @Query("tags") tags: String? = "under_30_minutes"
     ): Observable<ListRecipesResult>
 
 }

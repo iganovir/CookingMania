@@ -35,6 +35,9 @@ android {
     kapt {
         generateStubs = true
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -58,4 +61,9 @@ dependencies {
     implementation libraries.okHttp
     implementation libraries.rxJava
     implementation libraries.rxAndroid
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+    implementation libraries.shimmer
+    implementation libraries.paging
+    implementation libraries.pagingRxjava
 }

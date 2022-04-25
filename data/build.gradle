@@ -48,11 +48,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation libraries.dagger
-    kapt libraries.daggerCompiler
     implementation libraries.retrofit
     implementation libraries.retrofitRxJava
     implementation libraries.gson
     implementation libraries.okHttp
     implementation libraries.rxJava
     implementation libraries.rxAndroid
+    implementation libraries.roomKtx
+    implementation libraries.roomRxJava2
+    androidTestImplementation libraries.mockk
+
+    api libraries.roomRuntime
+
+    kapt libraries.roomKapt
+    kapt libraries.daggerCompiler
+
 }

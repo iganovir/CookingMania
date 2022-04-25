@@ -21,7 +21,7 @@ class RecipeEntityDataFactory @Inject constructor(
     private val networkEntityData: NetworkListRecipeEntityData
 ) {
 
-    fun createSearchUserEntityData(source: SourceType): RecipeEntityData =
+    fun createRecipeEntityData(source: SourceType): RecipeEntityData =
         when (source) {
             SourceType.MOCK -> mockEntityData
             SourceType.NETWORK -> networkEntityData

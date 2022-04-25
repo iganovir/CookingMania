@@ -6,7 +6,7 @@ import com.dana.onboardingproject.di.component.ApplicationComponent
 import com.dana.onboardingproject.di.component.DaggerApplicationComponent
 import com.dana.onboardingproject.di.module.ApplicationModule
 
-class OnboardingApp() : Application() {
+class CookingApp() : Application() {
 
     private lateinit var applicationComponent: ApplicationComponent
 

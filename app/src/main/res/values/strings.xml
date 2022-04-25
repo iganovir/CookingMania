@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">onboarding project</string>
+    <string name="cooking_time">%s Mins</string>
+    <string name="label_cooking_title">What can I cook in under 30 minutes?</string>
 </resources>

@@ -13,7 +13,7 @@ class RecipeEntityRepository @Inject constructor(private val repositoryFactory: 
     RecipeRepository {
 
     private fun getRemoteRepository() =
-        repositoryFactory.createSearchUserEntityData(SourceType.NETWORK)
+        repositoryFactory.createRecipeEntityData(SourceType.NETWORK)
 
     override fun getListRecipe(
         from: Int, size: Int
