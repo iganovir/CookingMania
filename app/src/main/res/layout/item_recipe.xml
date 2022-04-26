@@ -9,21 +9,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/standard_margin_small"
-    app:cardElevation="@dimen/standard_margin_small"
+    android:layout_margin="@dimen/standard_margin"
+    app:cardElevation="@dimen/standard_margin"
     app:cardCornerRadius="@dimen/standard_margin_small">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/standard_margin">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_recipe_thumbnail"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/standard_margin"
-            app:layout_constraintDimensionRatio="1:1"
+            android:scaleType="fitCenter"
+            app:layout_constraintDimensionRatio="9:4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,10 +31,12 @@
             android:id="@+id/tv_recipe_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/standard_margin"
             android:fontFamily="@font/poppins_bold"
             android:textSize="14sp"
             android:textColor="@color/black"
+            android:paddingTop="@dimen/standard_margin"
+            android:paddingBottom="@dimen/standard_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_recipe_thumbnail"

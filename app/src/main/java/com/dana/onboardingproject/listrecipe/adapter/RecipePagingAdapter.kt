@@ -6,29 +6,28 @@
 
 package com.dana.onboardingproject.listrecipe.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.dana.domain.listrecipe.model.Recipe
-import com.dana.onboardingproject.listrecipe.viewholder.RecipeItemViewHolder
+import com.dana.onboardingproject.databinding.ItemRecipeBinding
+import com.dana.onboardingproject.listrecipe.viewholder.ItemRecipeViewHolder
 
 
 /**
  * @author Iga Noviyanti (iga.noviyanti@dana.id)
  * @version RecipePagingAdapter, v 0.1 25/04/22 09.58 by Iga Noviyanti
  */
-class RecipePagingAdapter (private val callback: (recipe: Recipe) -> Unit) : PagingDataAdapter<Recipe, RecipeItemViewHolder>(diffUtils) {
+class RecipePagingAdapter: PagingDataAdapter<Recipe, ItemRecipeViewHolder>(diffUtils) {
 
-    override fun getItemCount(): Int {
-        return super.getItemCount()
+    override fun onBindViewHolder(holderRecipe: ItemRecipeViewHolder, position: Int) {
+//        getItem(position)?.let { holder.onBind(it) }
     }
 
-    override fun onBindViewHolder(holder: RecipeItemViewHolder, position: Int) {
-//        holder.onBind()
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeItemViewHolder {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRecipeViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return ItemRecipeViewHolder(ItemRecipeBinding.inflate(inflater, parent, false))
     }
 
     companion object {

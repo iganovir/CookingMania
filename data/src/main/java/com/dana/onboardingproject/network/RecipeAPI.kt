@@ -8,6 +8,7 @@ package com.dana.onboardingproject.network
 
 import com.dana.onboardingproject.listrecipe.repository.source.network.result.ListRecipesResult
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -23,5 +24,12 @@ interface RecipeAPI {
         @Query("size") size: Int,
         @Query("tags") tags: String? = "under_30_minutes"
     ): Observable<ListRecipesResult>
+
+    @GET(Constant.Network.Endpoint.LIST_RECIPE)
+    fun getRecipesPagination(
+        @Query("from") from: Int,
+        @Query("size") size: Int,
+        @Query("tags") tags: String? = "under_30_minutes"
+    ): Single<ListRecipesResult>
 
 }

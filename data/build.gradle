@@ -62,5 +62,8 @@ dependencies {
 
     kapt libraries.roomKapt
     kapt libraries.daggerCompiler
+    implementation libraries.paging
+    implementation libraries.pagingRxjava
+    implementation libraries.paginCommon
 
 }

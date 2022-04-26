@@ -24,10 +24,10 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupData(savedInstanceState)
         binding = setViewBinding()
         initializeView(binding = binding)
         setContentView(binding.root)
+        setupData(savedInstanceState)
     }
 
     protected fun getApplicationComponent() = (application as CookingApp).getApplicationComponent()

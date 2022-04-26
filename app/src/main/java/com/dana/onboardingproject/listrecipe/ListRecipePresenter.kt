@@ -7,6 +7,7 @@
 package com.dana.onboardingproject.listrecipe
 
 import com.dana.domain.listrecipe.interactor.GetListRecipe
+import com.dana.domain.listrecipe.interactor.GetListRecipePaging
 import javax.inject.Inject
 
 
@@ -20,14 +21,16 @@ class ListRecipePresenter @Inject constructor(
 ) : ListRecipeContract.Presenter {
 
     override fun getListRecipes(from: Int, size: Int?) {
+        view.setLoading(true)
         getRecipe.execute(
             GetListRecipe.Params(from = from, size = size ?: 0),
             onSuccess = { recipes ->
+                view.setLoading(false)
                 view.setListRecipes(recipes)
             },
             onError = { throwable ->
                 view.setErrorHandler(throwable)
-            }
+            },
         )
     }
 }

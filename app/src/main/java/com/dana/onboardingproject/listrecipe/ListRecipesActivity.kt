@@ -7,7 +7,10 @@
 package com.dana.onboardingproject.listrecipe
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dana.domain.listrecipe.model.Recipe
@@ -17,6 +20,7 @@ import com.dana.onboardingproject.di.component.DaggerListRecipeComponent
 import com.dana.onboardingproject.di.module.ListRecipeModule
 import com.dana.onboardingproject.listrecipe.adapter.RecipeAdapter
 import javax.inject.Inject
+
 
 /**
  * @author Iga Noviyanti (iga.noviyanti@dana.id)
@@ -29,9 +33,8 @@ class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
 
     private var firstIdRecipe = 0
 
-    private val recipeAdapter = RecipeAdapter {
-        Toast.makeText(this@ListRecipesActivity, "Recipe ${it.name} clicked", Toast.LENGTH_SHORT)
-            .show()
+    private val recipeAdapter = RecipeAdapter{
+        Toast.makeText(this@ListRecipesActivity, "Recipe ${it.name}", Toast.LENGTH_SHORT).show()
     }
 
     override fun setViewBinding() = ActivityListRecipesBinding.inflate(layoutInflater)
@@ -42,11 +45,31 @@ class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
     }
 
     override fun initializeView(binding: ActivityListRecipesBinding) {
-        binding.rvRecipe.apply {
-            adapter = recipeAdapter
-            val layoutManagerGrid = GridLayoutManager(this@ListRecipesActivity, 2)
-            layoutManager = layoutManagerGrid
-            itemAnimator = DefaultItemAnimator()
+        with(binding) {
+            rvRecipe.apply {
+                adapter = recipeAdapter
+                val layoutManagerGrid = GridLayoutManager(this@ListRecipesActivity, 1)
+                layoutManager = layoutManagerGrid
+                itemAnimator = DefaultItemAnimator()
+            }
+
+            nsvListRecipe.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (scrollY == v.getChildAt(0).measuredHeight - v.measuredHeight) {
+                    firstIdRecipe += 10
+                    presenter.getListRecipes(firstIdRecipe)
+                    recipeAdapter.showLoadingMoreData(true)
+                }
+
+                if (scrollY > oldScrollY) {
+                    fabToUp.hide()
+                } else {
+                    fabToUp.show()
+                }
+            })
+
+            fabToUp.setOnClickListener {
+                nsvListRecipe.smoothScrollTo(0,0)
+            }
         }
     }
 
@@ -60,15 +83,18 @@ class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
 
     private fun resultListRecipe() = ListRecipeModule(object : ListRecipeContract.View {
         override fun setListRecipes(recipes: List<Recipe>) {
+            recipeAdapter.showLoadingMoreData(false)
             recipeAdapter.insertItems(recipes)
         }
 
         override fun setLoading(isLoading: Boolean) {
-            TODO("Not yet implemented")
+            if(recipeAdapter.itemCount == 0) {
+                binding.shimmerLoading.rootShimmerLoading.isVisible = isLoading
+            }
         }
 
         override fun setErrorHandler(throwable: Throwable) {
-            TODO("Not yet implemented")
+            Log.e("error", "is error ${throwable.message}")
         }
     })
 

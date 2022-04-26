@@ -66,4 +66,5 @@ dependencies {
     implementation libraries.shimmer
     implementation libraries.paging
     implementation libraries.pagingRxjava
+    implementation libraries.lottie
 }
