@@ -1,8 +1,8 @@
 package com.dana.onboardingproject.di.component
 
-import com.dana.onboardingproject.examplemain.MainActivity
-import com.dana.onboardingproject.di.MainActivityModule
+import com.dana.onboardingproject.di.module.ListRecipeModule
 import com.dana.onboardingproject.di.PerActivity
+import com.dana.onboardingproject.listrecipe.ListRecipesActivity
 import dagger.Component
 
 
@@ -13,8 +13,8 @@ import dagger.Component
 @PerActivity
 @Component(
     dependencies = [ApplicationComponent::class],
-    modules = [MainActivityModule::class]
+    modules = [ListRecipeModule::class]
 )
-interface MainActivityComponent {
-    fun inject(activity: MainActivity)
+interface ListRecipeComponent {
+    fun inject(activity: ListRecipesActivity)
 }

@@ -42,4 +42,6 @@ dependencies {
     implementation libraries.rxJava
     implementation libraries.rxAndroid
     implementation libraries.javaxInject
+    androidTestImplementation libraries.mockk
+    implementation libraries.paginCommon
 }

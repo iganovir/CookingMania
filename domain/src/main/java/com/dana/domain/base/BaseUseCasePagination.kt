@@ -1,23 +1,21 @@
+/*
+ * PT. Espay Debit Indonesia Koe.
+ * DANA.id
+ * Copyright (c) 2017-2022. All Rights Reserved.
+ */
+
 package com.dana.domain.base
 
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Action
 
+
 /**
-* This **auto-dispose** UseCase class helps you to avoid memory leak when you forget to dispose
-* [Observable].
-*
-* * For [Single], use [SingleUseCase]
-* * For [Observable], use [BaseUseCase]
-*
-* @author Anggrayudi Hardiannico A. (anggrayudi.hardiannico@dana.id)
-* @version BaseUseCase.kt, v 0.0.1 2020-02-25 13:22 by Anggrayudi Hardiannico A.
-* @see CancellableUseCase
-* @see CompletableUseCase
-*/
-abstract class BaseUseCase<Params, T> () {
+ * @author Iga Noviyanti (iga.noviyanti@dana.id)
+ * @version BaseUseCasePagination, v 0.1 25/04/22 13.38 by Iga Noviyanti
+ */
+abstract class BaseUseCasePagination <Params, T> () {
 
     private val disposable = CompositeDisposable()
 
@@ -26,7 +24,7 @@ abstract class BaseUseCase<Params, T> () {
      *
      * @param params Use [NoParams] if you don't mind to pass any parameter.
      */
-    abstract fun buildUseCase(params: Params): Observable<T>
+    abstract fun buildUseCasePagination(params: Params): Flowable<T>
 
     @JvmOverloads
     fun execute(
@@ -54,10 +52,9 @@ abstract class BaseUseCase<Params, T> () {
         onDispose: Action = Action {}
     ) {
         print("test")
-        buildUseCase(params)
+        buildUseCasePagination(params)
             .subscribeOn(UseCaseSchedulers.jobScheduler)
             .observeOn(UseCaseSchedulers.postScheduler)
-            .doOnDispose(onDispose)
             .subscribe({
                 onSuccess(it)
             }, {
@@ -89,9 +86,8 @@ abstract class BaseUseCase<Params, T> () {
         onComplete: OnCompleteCallback? = {},
         onDispose: Action = Action {}
     ) {
-        buildUseCase(params)
+        buildUseCasePagination(params)
             .subscribeOn(UseCaseSchedulers.jobScheduler)
-            .doOnDispose(onDispose)
             .subscribe({
                 onSuccess(it)
             }, {

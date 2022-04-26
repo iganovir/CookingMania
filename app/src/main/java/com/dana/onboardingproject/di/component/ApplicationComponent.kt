@@ -4,6 +4,7 @@ import android.content.Context
 import com.dana.domain.listrecipe.repository.RecipeRepository
 import com.dana.onboardingproject.di.NetworkModule
 import com.dana.onboardingproject.di.module.ApplicationModule
+import com.dana.onboardingproject.listrecipe.paging.ListRecipePagingSource
 import dagger.Component
 import javax.inject.Singleton
 
