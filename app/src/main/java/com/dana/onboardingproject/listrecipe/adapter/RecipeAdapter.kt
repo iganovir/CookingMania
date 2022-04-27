@@ -64,6 +64,10 @@ class RecipeAdapter(private val callback: (recipe: Recipe) -> Unit) :
         }
     }
 
+    fun removeAllItems(){
+        items.clear()
+    }
+
     private fun hasExtraRow(): Boolean = isLoading
 
     fun showLoadingMoreData(

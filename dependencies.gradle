@@ -19,10 +19,6 @@ ext {
     mockkVersion = '1.12.2'
     espresso_version = '3.0.1'
     glide_version = '4.10.0'
-    crashlytics_version = '17.2.2'
-    firebase_version = '25.12.0'
-    chuck_version = "1.1.0"
-    room_version = "2.2.3"
     retrofitVersion = '2.9.0'
     okHttpVersion = '4.6.0'
     daggerVersion = '2.41'
@@ -35,11 +31,12 @@ ext {
     pagingVersion = '3.0.0-alpha03'
     pagingCommon = '3.1.1'
     lottieVersion = '5.0.3'
+    coroutinesVersion = '2.4.1'
 
     testLibraries = [
             jUnit           : "junit:junit:$junit_version",
             truth           : "com.google.truth:truth:$google_truth_version",
-            mock            : "io.mockk:mockk:1.12.0",
+            mock            : "io.mockk:mockk:$mockkVersion",
             androidxCoreTest: "androidx.test:core:$androidx_test_core_version",
             runner          : "androidx.test:runner:$runner_version",
             rules           : "androidx.test:rules:$rules_version",
@@ -61,10 +58,6 @@ ext {
             daggerAndroidSupport  : "com.google.dagger:dagger-android-support:${daggerVersion}",
             daggerAndroid         : "com.google.dagger:dagger-android:${daggerVersion}",
             daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}",
-
-            //chuck
-            chuckDev               : "com.readystatesoftware.chuck:library:$chuck_version",
-            chuckProd              : "com.readystatesoftware.chuck:library-no-op:$chuck_version",
 
             //Glide
             glide                  : "com.github.bumptech.glide:glide:$glide_version",
@@ -88,7 +81,6 @@ ext {
             roomKtx               : "androidx.room:room-ktx:${roomVersion}",
             roomRuntime           : "androidx.room:room-runtime:${roomVersion}",
             roomRxJava2           : "androidx.room:room-rxjava2:${roomVersion}",
-            mockk                 : "io.mockk:mockk:${mockkVersion}",
             roomCompiler           : "androidx.room:room-compiler:$roomVersion",
 
             //paging
@@ -97,6 +89,9 @@ ext {
             paginCommon            : "androidx.paging:paging-common-ktx:$pagingCommon",
 
             //lottie
-            lottie               : "com.airbnb.android:lottie:$lottieVersion"
+            lottie               : "com.airbnb.android:lottie:$lottieVersion",
+
+            //coroutines
+            coroutines           : "androidx.lifecycle:lifecycle-runtime-ktx:$coroutinesVersion"
     ]
 }

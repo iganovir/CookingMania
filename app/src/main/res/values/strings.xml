@@ -1,6 +1,12 @@
 <resources>
-    <string name="app_name">onboarding project</string>
+    <string name="app_name">Cooking Mania</string>
     <string name="cooking_time">%s Mins</string>
     <string name="label_cooking_title">Cooking Recipes</string>
     <string name="label_cooking_desc">What can I cook in under 30 minutes?</string>
+    <string name="cooking_instruction">Instructions :</string>
+    <string name="cooking_instruction_position">%d.</string>
+    <string name="recipe_add_to_cook_later">Add to Cook Later</string>
+    <string name="recipe_added_to_cook_later">Remove from Cook Later</string>
+    <string name="cook_later_title">Cook Later</string>
+    <string name="cook_later_desc">The last 20 recipes you added</string>
 </resources>

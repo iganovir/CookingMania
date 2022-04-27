@@ -6,7 +6,7 @@
 
 package com.dana.onboardingproject.listrecipe.repository.source
 
-import com.dana.onboardingproject.listrecipe.repository.source.mock.MockRecipeEntityData
+import com.dana.onboardingproject.listrecipe.repository.source.local.PersistenceRecipeEntityData
 import com.dana.onboardingproject.listrecipe.repository.source.network.NetworkListRecipeEntityData
 import com.dana.onboardingproject.util.SourceType
 import javax.inject.Inject
@@ -17,14 +17,11 @@ import javax.inject.Inject
  */
 
 class RecipeEntityDataFactory @Inject constructor(
-    private val mockEntityData: MockRecipeEntityData,
+    private val persistenceEntityData: PersistenceRecipeEntityData,
     private val networkEntityData: NetworkListRecipeEntityData
 ) {
 
-    fun createRecipeEntityData(source: SourceType): RecipeEntityData =
-        when (source) {
-            SourceType.MOCK -> mockEntityData
-            SourceType.NETWORK -> networkEntityData
-        }
+    fun createRecipeEntityDataRemote(): RecipeEntityDataRemote = networkEntityData
+    fun createRecipeEntityDataLocal(): RecipeEntityDataLocal = persistenceEntityData
 
 }

@@ -12,16 +12,21 @@ import com.dana.onboardingproject.listrecipe.mapper.toEntity
 import com.dana.onboardingproject.listrecipe.model.RecipeEntity
 import com.dana.onboardingproject.listrecipe.paging.ListRecipePagingSource
 import com.dana.onboardingproject.listrecipe.repository.source.RecipeEntityDataFactory
-import com.dana.onboardingproject.util.SourceType
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class RecipeEntityRepository @Inject constructor(private val repositoryFactory: RecipeEntityDataFactory, private val pagingSource: ListRecipePagingSource) :
+class RecipeEntityRepository @Inject constructor(
+    private val repositoryFactory: RecipeEntityDataFactory,
+    private val pagingSource: ListRecipePagingSource
+) :
     RecipeRepository {
 
     private fun getRemoteRepository() =
-        repositoryFactory.createRecipeEntityData(SourceType.NETWORK)
+        repositoryFactory.createRecipeEntityDataRemote()
+
+    private fun getLocalRepository() =
+        repositoryFactory.createRecipeEntityDataLocal()
 
     override fun getListRecipe(
         from: Int, size: Int
@@ -45,7 +50,8 @@ class RecipeEntityRepository @Inject constructor(private val repositoryFactory: 
                 enablePlaceholders = true,
                 maxSize = 30,
                 prefetchDistance = 5,
-                initialLoadSize = 40),
+                initialLoadSize = 40
+            ),
             pagingSourceFactory = { pagingSource }
         ).flowable
             .map { pagingData ->
@@ -53,5 +59,30 @@ class RecipeEntityRepository @Inject constructor(private val repositoryFactory: 
                     it.toDomain()
                 }
             }
+    }
+
+    override fun getDetailRecipe(id: Int): Observable<Recipe> {
+        return getRemoteRepository().detailRecipe(id = id)
+            .map { recipe ->
+                recipe.toDomain()
+            }
+    }
+
+    override fun getDetailRecipeLocal(id: Int): Recipe? {
+        return getLocalRepository().detailRecipeLocal(id)?.toDomain()
+    }
+
+    override fun addRecipeToCookLater(recipe: Recipe): Long {
+        return getLocalRepository().addRecipeToCookLater(recipe = recipe.toEntity())
+    }
+
+    override fun getListRecipeLocal(): List<Recipe> {
+        return getLocalRepository().listRecipeLocal(0, 0).map {
+            it.toDomain()
+        }
+    }
+
+    override fun deleteRecipeFromCooklater(recipe: Recipe) {
+        getLocalRepository().deleteRecipeFromCooklater(recipe = recipe.toEntity())
     }
 }

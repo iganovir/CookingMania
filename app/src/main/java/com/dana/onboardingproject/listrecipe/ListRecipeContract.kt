@@ -8,6 +8,7 @@ package com.dana.onboardingproject.listrecipe
 
 import androidx.paging.PagingData
 import com.dana.domain.listrecipe.model.Recipe
+import com.dana.onboardingproject.base.BaseView
 
 
 /**
@@ -19,9 +20,7 @@ interface ListRecipeContract {
         fun getListRecipes(from: Int, size: Int? = 10)
     }
 
-    interface View {
+    interface View : BaseView {
         fun setListRecipes(recipes: List<Recipe>)
-        fun setLoading(isLoading: Boolean)
-        fun setErrorHandler(throwable: Throwable)
     }
 }

@@ -11,5 +11,5 @@ package com.dana.onboardingproject.util
  * @version SourceType, v 0.1 22/04/22 11.26 by Iga Noviyanti
  */
 enum class SourceType {
-    MOCK, NETWORK
+    NETWORK, LOCAL
 }

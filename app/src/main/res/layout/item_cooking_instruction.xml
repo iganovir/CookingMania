@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ PT. Espay Debit Indonesia Koe.
+  ~ DANA.id
+  ~ Copyright (c) 2017-2022. All Rights Reserved.
+  -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/standard_margin"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="@dimen/standard_margin_small">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/standard_margin">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <TextView
+            android:id="@+id/tv_recipe_instruction_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="@dimen/standard_margin_small"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1." />
+
+        <TextView
+            android:id="@+id/tv_recipe_instruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="@dimen/standard_margin_small"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_number"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

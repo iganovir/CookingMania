@@ -6,9 +6,11 @@
 
 package com.dana.onboardingproject.listrecipe.repository.source.network
 
+import com.dana.onboardingproject.listrecipe.mapper.toDomain
 import com.dana.onboardingproject.listrecipe.mapper.toEntity
 import com.dana.onboardingproject.listrecipe.model.RecipeEntity
 import com.dana.onboardingproject.listrecipe.repository.source.RecipeEntityData
+import com.dana.onboardingproject.listrecipe.repository.source.RecipeEntityDataRemote
 import com.dana.onboardingproject.network.RecipeAPI
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -19,13 +21,19 @@ import javax.inject.Inject
  */
 class NetworkListRecipeEntityData @Inject constructor(
     private val recipeAPI: RecipeAPI
-) : RecipeEntityData {
+) : RecipeEntityDataRemote {
 
     override fun listRecipe(from: Int, size: Int): Observable<List<RecipeEntity>> {
         return recipeAPI.getRecipes(from = from, size = size).map {response ->
             response.results?.map { recipeItem ->
                 recipeItem.toEntity()
             }
+        }
+    }
+
+    override fun detailRecipe(id: Int): Observable<RecipeEntity> {
+        return recipeAPI.getDetailRecipe(id = id).map {
+            it.toEntity()
         }
     }
 }

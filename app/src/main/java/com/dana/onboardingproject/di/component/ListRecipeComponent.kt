@@ -1,7 +1,7 @@
 package com.dana.onboardingproject.di.component
 
-import com.dana.onboardingproject.di.module.ListRecipeModule
 import com.dana.onboardingproject.di.PerActivity
+import com.dana.onboardingproject.di.module.ListRecipeModule
 import com.dana.onboardingproject.listrecipe.ListRecipesActivity
 import dagger.Component
 

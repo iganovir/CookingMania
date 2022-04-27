@@ -6,10 +6,13 @@
 
 package com.dana.onboardingproject.base
 
+import android.app.Activity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.dana.onboardingproject.CookingApp
+import com.dana.onboardingproject.listrecipe.model.Error
 
 
 /**
@@ -33,4 +36,8 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity() {
     protected fun getApplicationComponent() = (application as CookingApp).getApplicationComponent()
 
     abstract fun setViewBinding(): T
+
+    protected fun handleError(activity: Activity, error: Throwable){
+        Toast.makeText(activity, "Error status ${error.message}", Toast.LENGTH_SHORT).show()
+    }
 }
