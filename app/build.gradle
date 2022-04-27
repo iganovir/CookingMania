@@ -67,4 +67,5 @@ dependencies {
     implementation libraries.paging
     implementation libraries.pagingRxjava
     implementation libraries.lottie
+    implementation libraries.coroutines
 }

@@ -56,7 +56,8 @@ dependencies {
     implementation libraries.rxAndroid
     implementation libraries.roomKtx
     implementation libraries.roomRxJava2
-    androidTestImplementation libraries.mockk
+    testImplementation testLibraries.mock
+    testImplementation testLibraries.truth
 
     api libraries.roomRuntime
 

@@ -30,4 +30,5 @@ class ApplicationModule(private val app: Application) {
         recipeEntityRepository: RecipeEntityRepository
     ): RecipeRepository =
         recipeEntityRepository
+
 }

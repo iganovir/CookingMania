@@ -54,7 +54,7 @@ data class ListRecipesResult(
         @SerializedName("inspired_by_url")
         val inspiredByUrl: Any? = null,
         @SerializedName("instructions")
-        val instructions: List<Instruction?>? = null,
+        val instructions: List<Instruction>? = null,
         @SerializedName("is_one_top")
         val isOneTop: Boolean? = null,
         @SerializedName("is_shoppable")
@@ -135,7 +135,7 @@ data class ListRecipesResult(
 
         data class Instruction(
             @SerializedName("appliance")
-            val appliance: Any? = null,
+            val appliance: String? = null,
             @SerializedName("display_text")
             val displayText: String? = null,
             @SerializedName("end_time")
@@ -147,7 +147,7 @@ data class ListRecipesResult(
             @SerializedName("start_time")
             val startTime: Int? = null,
             @SerializedName("temperature")
-            val temperature: Any? = null
+            val temperature: String? = null
         )
 
         data class Nutrition(

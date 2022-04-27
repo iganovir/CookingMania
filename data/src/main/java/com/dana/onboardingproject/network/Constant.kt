@@ -13,6 +13,16 @@ object Constant {
 
         object Endpoint{
             const val LIST_RECIPE = "recipes/list"
+            const val DETAIL_RECIPE = "recipes/detail"
+        }
+    }
+
+    object Local {
+        object Database {
+            const val NAME = "RecipeDB"
+            object Table {
+                const val Recipes = "Recipes"
+            }
         }
     }
 }

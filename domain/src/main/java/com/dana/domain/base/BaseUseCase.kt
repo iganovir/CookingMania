@@ -73,37 +73,6 @@ abstract class BaseUseCase<Params, T> () {
     private fun getSubclassPath(): String =
         this.javaClass.asSubclass(this.javaClass).name ?: "Unknown"
 
-    @JvmOverloads
-    fun executeInBackground(
-        params: Params,
-        onSuccess: OnSuccessCallback<T>,
-        onError: OnErrorCallback = {}
-    ) {
-        executeInBackground(params, onSuccess, onError, null) {}
-    }
-
-    fun executeInBackground(
-        params: Params,
-        onSuccess: OnSuccessCallback<T>,
-        onError: OnErrorCallback = {},
-        onComplete: OnCompleteCallback? = {},
-        onDispose: Action = Action {}
-    ) {
-        buildUseCase(params)
-            .subscribeOn(UseCaseSchedulers.jobScheduler)
-            .doOnDispose(onDispose)
-            .subscribe({
-                onSuccess(it)
-            }, {
-                onError(it)
-                dispose()
-            }, {
-                onComplete?.invoke()
-                dispose()
-            })
-            .let { disposable.add(it) }
-    }
-
     fun dispose() {
         disposable.clear()
     }

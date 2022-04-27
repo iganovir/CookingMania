@@ -32,4 +32,9 @@ interface RecipeAPI {
         @Query("tags") tags: String? = "under_30_minutes"
     ): Single<ListRecipesResult>
 
+    @GET(Constant.Network.Endpoint.DETAIL_RECIPE)
+    fun getDetailRecipe(
+        @Query("id") id: Int
+    ): Observable<ListRecipesResult.RecipeItem>
+
 }

@@ -2,6 +2,7 @@ package com.dana.onboardingproject.di.component
 
 import android.content.Context
 import com.dana.domain.listrecipe.repository.RecipeRepository
+import com.dana.onboardingproject.di.DatabaseModule
 import com.dana.onboardingproject.di.NetworkModule
 import com.dana.onboardingproject.di.module.ApplicationModule
 import com.dana.onboardingproject.listrecipe.paging.ListRecipePagingSource
@@ -17,7 +18,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
         ApplicationModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        DatabaseModule::class
     ]
 )
 interface ApplicationComponent {

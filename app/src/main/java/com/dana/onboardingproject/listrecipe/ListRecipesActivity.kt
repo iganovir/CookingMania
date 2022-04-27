@@ -6,19 +6,23 @@
 
 package com.dana.onboardingproject.listrecipe
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dana.domain.listrecipe.model.Recipe
 import com.dana.onboardingproject.base.BaseActivity
+import com.dana.onboardingproject.cooklater.CooklaterActivity
 import com.dana.onboardingproject.databinding.ActivityListRecipesBinding
+import com.dana.onboardingproject.detailrecipe.DetailRecipeActivity
 import com.dana.onboardingproject.di.component.DaggerListRecipeComponent
 import com.dana.onboardingproject.di.module.ListRecipeModule
 import com.dana.onboardingproject.listrecipe.adapter.RecipeAdapter
+import com.dana.onboardingproject.listrecipe.model.Error
 import javax.inject.Inject
 
 
@@ -26,7 +30,7 @@ import javax.inject.Inject
  * @author Iga Noviyanti (iga.noviyanti@dana.id)
  * @version ListRecipesActivity, v 0.1 22/04/22 15.27 by Iga Noviyanti
  */
-class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
+class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>(), ListRecipeContract.View  {
 
     @Inject
     lateinit var presenter: ListRecipeContract.Presenter
@@ -34,7 +38,9 @@ class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
     private var firstIdRecipe = 0
 
     private val recipeAdapter = RecipeAdapter{
-        Toast.makeText(this@ListRecipesActivity, "Recipe ${it.name}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@ListRecipesActivity, DetailRecipeActivity::class.java)
+        intent.putExtra(DetailRecipeActivity.RECIPE_ID, it.id)
+        startActivity(intent)
     }
 
     override fun setViewBinding() = ActivityListRecipesBinding.inflate(layoutInflater)
@@ -48,12 +54,11 @@ class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
         with(binding) {
             rvRecipe.apply {
                 adapter = recipeAdapter
-                val layoutManagerGrid = GridLayoutManager(this@ListRecipesActivity, 1)
-                layoutManager = layoutManagerGrid
+                layoutManager = LinearLayoutManager(this@ListRecipesActivity)
                 itemAnimator = DefaultItemAnimator()
             }
 
-            nsvListRecipe.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            nsvListRecipe.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, oldScrollY ->
                 if (scrollY == v.getChildAt(0).measuredHeight - v.measuredHeight) {
                     firstIdRecipe += 10
                     presenter.getListRecipes(firstIdRecipe)
@@ -70,32 +75,34 @@ class ListRecipesActivity : BaseActivity<ActivityListRecipesBinding>() {
             fabToUp.setOnClickListener {
                 nsvListRecipe.smoothScrollTo(0,0)
             }
+
+            ivCookLater.setOnClickListener {
+                startActivity(Intent(this@ListRecipesActivity, CooklaterActivity::class.java))
+            }
         }
     }
 
     private fun initInjector() {
         DaggerListRecipeComponent.builder()
             .applicationComponent(getApplicationComponent())
-            .listRecipeModule(resultListRecipe())
+            .listRecipeModule(ListRecipeModule(this))
             .build()
             .inject(this)
     }
 
-    private fun resultListRecipe() = ListRecipeModule(object : ListRecipeContract.View {
-        override fun setListRecipes(recipes: List<Recipe>) {
-            recipeAdapter.showLoadingMoreData(false)
-            recipeAdapter.insertItems(recipes)
-        }
+    override fun setListRecipes(recipes: List<Recipe>) {
+        recipeAdapter.showLoadingMoreData(false)
+        recipeAdapter.insertItems(recipes)
+    }
 
-        override fun setLoading(isLoading: Boolean) {
-            if(recipeAdapter.itemCount == 0) {
-                binding.shimmerLoading.rootShimmerLoading.isVisible = isLoading
-            }
+    override fun setLoading(isLoading: Boolean) {
+        if(recipeAdapter.itemCount == 0) {
+            binding.shimmerLoading.rootShimmerLoading.isVisible = isLoading
         }
+    }
 
-        override fun setErrorHandler(throwable: Throwable) {
-            Log.e("error", "is error ${throwable.message}")
-        }
-    })
+    override fun setErrorHandler(throwable: Throwable) {
+        handleError(this@ListRecipesActivity, throwable)
+    }
 
 }
