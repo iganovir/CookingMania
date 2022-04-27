@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ PT. Espay Debit Indonesia Koe.
+  ~ DANA.id
+  ~ Copyright (c) 2017-2022. All Rights Reserved.
+  -->
+
+<resources>
+    <dimen name="image_options_circle_radius">200dp</dimen>
+    <dimen name="image_options_round_radius">4dp</dimen>
+
+    <!-- Standard margin -->
+    <dimen name="standard_margin_small">4dp</dimen>
+    <dimen name="standard_margin">8dp</dimen>
+    <dimen name="standard_margin_1x">12dp</dimen>
+    <dimen name="standard_margin_2x">16dp</dimen>
+    <dimen name="standard_margin_3x">24dp</dimen>
+    <dimen name="standard_margin_4x">32dp</dimen>
+    <dimen name="standard_margin_5x">40dp</dimen>
+    <dimen name="standard_margin_6x">48dp</dimen>
+    <dimen name="standard_margin_7x">56dp</dimen>
+    <dimen name="standard_margin_8x">64dp</dimen>
+    <dimen name="standard_margin_9x">72dp</dimen>
+    <dimen name="standard_margin_10x">80dp</dimen>
+
+</resources>

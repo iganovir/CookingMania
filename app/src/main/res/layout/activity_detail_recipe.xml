@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ PT. Espay Debit Indonesia Koe.
+  ~ DANA.id
+  ~ Copyright (c) 2017-2022. All Rights Reserved.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_list_recipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <TextView
+                android:id="@+id/tv_recipe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_2x"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_recipe_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/standard_margin_2x"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:layout_marginEnd="@dimen/standard_margin_2x"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe_name" />
+
+            <TextView
+                android:id="@+id/tv_recipe_servings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_2x"
+                android:drawablePadding="@dimen/standard_margin_small"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="2dp"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_baseline_person_outline_24"
+                app:layout_constraintEnd_toStartOf="@id/btn_add_to_cook_later"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_recipe_thumbnail"
+                tools:text="2 Persons" />
+
+            <TextView
+                android:id="@+id/tv_recipe_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/standard_margin_2x"
+                android:layout_marginTop="@dimen/standard_margin_small"
+                android:drawablePadding="@dimen/standard_margin_small"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="2dp"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_baseline_access_time_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe_servings"
+                tools:text="2 Persons" />
+
+            <TextView
+                android:id="@+id/tv_recipe_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_2x"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe_time"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/tv_recipe_instruction_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standard_margin_2x"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="2dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="@string/cooking_instruction"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe_desc" />
+
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/btn_add_to_cook_later"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_margin="@dimen/standard_margin_2x"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                android:text="@string/recipe_add_to_cook_later"
+                android:textAllCaps="false"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="@dimen/standard_margin_2x"
+                app:rippleColor="#33AAAAAA"
+                app:strokeColor="@color/red"
+                app:strokeWidth="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_recipe_thumbnail" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                android:padding="@dimen/standard_margin"
+                app:layout_constraintTop_toBottomOf="@id/tv_recipe_instruction_title"
+                tools:listitem="@layout/item_cooking_instruction"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_loading"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="cooking_pot.json"
+        app:lottie_loop="true"
+        app:lottie_speed="1.25"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
